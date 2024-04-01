@@ -14,7 +14,7 @@ function MachineLearningPractice() {
 
     const handalscore = ()=>{
         const { QUIZE1,OPPE1,OPPE2,GAA,END_TERM,QUIZE2} = inputvalue
-        const T = 0.1 * GAA + 0.3 * END_TERM + 0.15 * OPPE1 + 0.15 * OPPE2 + Math.max(0.15 * QUIZE1 + 0.15 * QUIZE2, 0.2*Math.max(QUIZE1,QUIZE2))
+        let T = 0.1 * GAA + 0.3 * END_TERM + 0.15 * OPPE1 + 0.15 * OPPE2 + Math.max(0.15 * QUIZE1 + 0.15 * QUIZE2, 0.2*Math.max(QUIZE1,QUIZE2))
 
         T = Math.min(T, 100);
         let score = parseInt(T)
