@@ -6,7 +6,7 @@ function StatisticsTwo() {
         QUIZ2: '',
         GAA: '',
         BONUS_MARKS: '',
-        End_Term: '',
+        END_TERM: '',
       });
       const [score, setScore] = useState("");
       let [grade, setgrade] = useState("");

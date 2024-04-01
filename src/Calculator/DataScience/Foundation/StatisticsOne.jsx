@@ -6,7 +6,7 @@ function StatisticsOne() {
         QUIZ2: '',
         GAA: '',
         BONUS_MARKS: '',
-        End_Term: '',
+        END_TERM: '',
       });
       const [score, setScore] = useState("");
       let [grade, setgrade] = useState("");
@@ -35,6 +35,7 @@ function StatisticsOne() {
         T = Math.min(T, 100);
         let score = parseInt(T)
         setScore(score);
+        
     
         if (score >= 90) {
           setgrade('PASS : S');
