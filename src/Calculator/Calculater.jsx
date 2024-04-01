@@ -22,6 +22,7 @@ import SoftwareTesting from './DataScience/Degree/SoftwareTesting';
 import SoftwareEngineering from './DataScience/Degree/SoftwareEngineering';
 import DeepLearning from './DataScience/Degree/DeepLearning';
 import SearchMethods from './DataScience/Degree/SearchMethods';
+import Message from './Message';
 function Calculater() {
     // State variables
     const [selectedCourse, setSelectedCourse] = useState("");
@@ -41,7 +42,7 @@ function Calculater() {
     ];
     const subjectOptions = {
         datascience: {
-            foundation: [
+            foundation: [   
                 { value: 'python', label: 'Python' },
                 { value: 'ct', label: 'CT' },
                 { value: 'math-I', label: 'Math-I' },
@@ -65,7 +66,7 @@ function Calculater() {
                 { value: 'sc', label: 'System commands' },
                 { value: 'ad2', label: 'Application Development-2' }
             ],
-            Degree:[
+            degree:[
                 {value: 'SoftwareTesting', label: 'Software Testing'},
                 {value: 'SoftwareEngineering', label: 'Software Engineering'},
                 { value: 'DeepLearning' , label: 'Deep Learning'},
@@ -84,6 +85,12 @@ function Calculater() {
                 { value: 'ElectronicCircuits', label: 'Electrical and Electronic Circuits' },
                 { value: 'ElectronicsLab', label: 'Electronics Lab' },
             ],
+            diploma:[
+                {value:'_', label: 'message'}
+            ],
+            degree:[
+                {value:'_', label: 'message'}
+            ]
         }
     };
     // Function to handle course selection
@@ -103,7 +110,16 @@ function Calculater() {
     const handleSubjectChange = (selectedSubject) => {
         setSelectedSubject(selectedSubject);
     };
-
+    const handelmessage = ()=>{
+        if(selectedCourse === 'electronic' && selectedLevel === 'diploma' || selectedLevel === 'degree' ){
+            setResult(<Message/>)
+        } else {
+            setResult(null); // Clear the result if the conditions are not met
+        }
+    }
+    useEffect(() => {
+        handelmessage();
+    }, [selectedCourse, selectedLevel]);
     useEffect(() => {
         if (selectedSubject === 'math-I') {
             setResult(<CommonForm/>)
@@ -233,7 +249,7 @@ function Calculater() {
         )}
         {/* Result (displayed when a subject is selected) */}
         {selectedSubject && (
-            <div className="result">
+            <div>
                 {result}
             </div>
         )}
