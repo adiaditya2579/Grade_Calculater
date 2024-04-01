@@ -36,7 +36,8 @@ function Calculater() {
 
     const levelOptions = [
         { value: 'foundation', label: 'Foundation' },
-        { value: 'diploma', label: 'Diploma' }
+        { value: 'diploma', label: 'Diploma' },
+        { value: 'degree', label: 'Degree' }
     ];
     const subjectOptions = {
         datascience: {
