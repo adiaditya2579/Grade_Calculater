@@ -41,17 +41,23 @@ function CommonForm() {
           setgrade('PASS : E');
         }else{
           setgrade('FAIL')
+          if(setgrade('FAIL')){
+
+          }
         }
+        
       };
+      
   return (
-    <div className='mt-[40px] mx-[20px] p-5 border-[1px] border-[#393939] rounded-md'>
+    <div className=' absolute left-1/2 transform -translate-x-1/2'>
+      <div className=' mt-[40px] mx-[20px] p-5 max-w-[800px] border-[1px] border-[#393939] rounded-md'>
         {Object.entries(inputvalue).map(([key, value]) => (
-        <div key={key} className='w-[100%]'>
-            <label htmlFor={key} className=' text-white font-semibold min-w-10'>
+        <div key={key} className='w-[100%] flex'>
+            <label htmlFor={key} className='p-2 text-white font-semibold w-[5%]'>
             {key}
             </label>
             <input
-            className='w-[60%] p-2 px-2 bg-inherit text-yellow-500 rounded-md outline-none border-b-[1px] border-[#393939]'
+            className='p-2 mx-20 bg-inherit text-yellow-500 w-[90%] md:w-[50%] rounded-md outline-none border-b-[1px] border-[#393939]'
             type="number"
             name={key}
             placeholder={`${key} Score`}
@@ -72,9 +78,17 @@ function CommonForm() {
         ))}
         <div>
         <button onClick={handalscore} className='bg-purple-800 px-4 py-2 my-2 text-white rounded-md'>Submit</button>
-        <p className=' text-white'>Final Score {score}</p>
-        <h1 className=' text-white'>Letter Grade {grade}</h1>
+        <div className='flex font-bold gap-6'>
+            <h1 className='text-white'>Final Score: </h1>
+            <div className={score < 40 ? 'text-red-600' : 'text-green-600'}> {score}</div>
         </div>
+        <div className='flex font-bold gap-6'>
+            <h1 className='text-white'>Letter Grade:</h1>
+            <div className={grade === 'FAIL' ? 'text-red-600' : 'text-green-600'}>{grade}</div>
+        </div>
+        
+        </div>
+      </div>
     </div>
 
   )
