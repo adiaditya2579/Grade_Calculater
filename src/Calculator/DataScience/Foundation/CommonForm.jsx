@@ -57,7 +57,7 @@ function CommonForm() {
             {key}
             </label>
             <input
-            className='p-2 mx-20 bg-inherit text-yellow-500 w-[90%] md:w-[50%] rounded-md outline-none border-b-[1px] border-[#393939]'
+            className='p-2 mx-20 bg-inherit text-yellow-500 w-[100%] md:w-[50%] rounded-md outline-none border-b-[1px] border-[#393939]'
             type="number"
             name={key}
             placeholder={`${key} Score`}
@@ -78,7 +78,7 @@ function CommonForm() {
         ))}
         <div>
         <button onClick={handalscore} className='bg-purple-800 px-4 py-2 my-2 text-white rounded-md'>Submit</button>
-        <div className='flex font-bold gap-6'>
+        <div className='flex font-bold gap-7'>
             <h1 className='text-white'>Final Score: </h1>
             <div className={score < 40 ? 'text-red-600' : 'text-green-600'}> {score}</div>
         </div>
