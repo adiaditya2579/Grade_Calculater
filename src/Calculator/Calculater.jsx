@@ -221,62 +221,63 @@ function Calculater() {
 
 
   return (
-    <div className=' flex flex-col justify-center items-center w-full'>
-        <div className=' min-h-[10vh] flex justify-between items-center gap-2  flex-wrap w-[full] pr-[5%] pl-[5%] py-2 border-b-[1px] border-[#393939] max-[880px]:justify-center'>
-            <h1 className='flex justify-center items-center gap-2 text-2xl font-semibold'>
-            <MdCalculate/>
-            <span className=' text-2xl font-semibold'>Grade Calculater</span>
-            </h1>
-        
-            <select
-                className=' bg-[#393939] p-2 pr-4 pl-4 text-white outline-none rounded-md w-[240px]'
+    <div className=''>
+        <div className='min-h-[10vh] md:flex justify-between md:flex-wrap border-b-[1px] border-[#393939] px-[5%] py-2'>
+            <div className='flex justify-center items-center gap-2 text-2xl font-semibold'>
+                <MdCalculate/>
+                <span className='text-2xl font-bold'>Grade Calculater</span>
+            </div>
+            <div className='flex flex-col md:flex-row justify-center items-center'>
+                <select
+                className=' bg-[#393939] p-2 my-2 text-white outline-none rounded-md w-[240px]'
                 value={selectedCourse}
-            onChange={(e) => handleCourseChange(e.target.value)}
-            >
+                onChange={(e) => handleCourseChange(e.target.value)}
+                >
                 <option value="">Select Course</option>
                 {courseOptions.map((course) => (
                     <option key={course.value} value={course.value}>
                         {course.label}
                     </option>
                 ))}
-            </select>
-            {/* Level dropdown (displayed when a course is selected) */}
-            {selectedCourse && (
-                <select
-                    className=' bg-[#393939] p-2 pr-4 pl-4 text-white outline-none rounded-md w-[240px]'
-                    value={selectedLevel}
-                    onChange={(e) => handleLevelChange(e.target.value)}
-                >
-                    <option value="">Select Level</option>
-                    {levelOptions.map((level) => (
-                        <option key={level.value} value={level.value}>
-                            {level.label}
-                        </option>
-                    ))}
                 </select>
-            )}
-            {/* Subject dropdown (displayed when both course and level are selected) */}
-            {selectedCourse && selectedLevel && (
-                <select
-                    className=' bg-[#393939] p-2 pr-4 pl-4 text-white outline-none rounded-md w-[240px]'
-                    value={selectedSubject}
-                    onChange={(e) => handleSubjectChange(e.target.value)}
-                >
-                    <option value="">Select Subject</option>
-                    {subjectOptions[selectedCourse][selectedLevel].map((subject) => (
-                        <option key={subject.value} value={subject.value}>
-                            {subject.label}
-                        </option>
-                    ))}
-                </select>
-            )}
-            {/* Result (displayed when a subject is selected) */}
-            {selectedSubject && (
-                <div>
-                    {result}
-                </div>
-            )}
+                {/* Level dropdown (displayed when a course is selected) */}
+                {selectedCourse && (
+                    <select
+                        className=' bg-[#393939] p-2 md:mx-2  text-white outline-none rounded-md w-[240px]'
+                        value={selectedLevel}
+                        onChange={(e) => handleLevelChange(e.target.value)}
+                    >
+                        <option value="">Select Level</option>
+                        {levelOptions.map((level) => (
+                            <option key={level.value} value={level.value}>
+                                {level.label}
+                            </option>
+                        ))}
+                    </select>
+                )}
+                {/* Subject dropdown (displayed when both course and level are selected) */}
+                {selectedCourse && selectedLevel && (
+                    <select
+                        className=' bg-[#393939] p-2 my-2 text-white outline-none rounded-md w-[240px]'
+                        value={selectedSubject}
+                        onChange={(e) => handleSubjectChange(e.target.value)}
+                    >
+                        <option value="">Select Subject</option>
+                        {subjectOptions[selectedCourse][selectedLevel].map((subject) => (
+                            <option key={subject.value} value={subject.value}>
+                                {subject.label}
+                            </option>
+                        ))}
+                    </select>
+                )}
+            </div>
         </div>
+        {/* Result (displayed when a subject is selected) */}
+        {selectedSubject && (
+            <div>
+                {result}
+            </div>
+        )}
     </div>
   )
 }
