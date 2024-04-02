@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {MdCalculate} from 'react-icons/md'
 import StatisticsOne from './DataScience/Foundation/StatisticsOne';
 import StatisticsTwo from './DataScience/Foundation/StatisticsTwo';
 import CommonForm from './DataScience/Foundation/CommonForm';
@@ -70,7 +71,21 @@ function Calculater() {
                 {value: 'SoftwareTesting', label: 'Software Testing'},
                 {value: 'SoftwareEngineering', label: 'Software Engineering'},
                 { value: 'DeepLearning' , label: 'Deep Learning'},
-                { value: 'SearchMethods' , label: 'Search Methods'}
+                { value: 'SearchMethods' , label: 'Search Methods'},
+                { value: 'ProfessionalGrowth' , label: 'Professional Growth'},
+                { value: 'DataVisualization ' , label: 'Data Visualization '},
+                { value: 'DTDD' , label: 'Design Thinking for Data-Driven '},
+                { value: 'MarketResearch' , label: 'Market Research'},
+                { value: 'IntroductionBigData' , label: 'Introduction to Big Data'},
+                { value: 'PSOS' , label: 'Privacy & Security in Online Social'},
+                { value: 'StatisticalComputing' , label: 'Statistical Computing'},
+                { value: 'ComputerSystemDesign' , label: 'Computer System Design'},
+                { value: 'OperatingSystems' , label: 'Operating Systems'},
+                { value: 'ProgrammingC' , label: 'Programming in C'},
+                { value: 'DLFCV' , label: 'Deep Learning for Computer VISION'},
+                { value: 'LargeLanguageModels' , label: 'Large Language Models '},
+                { value: 'ManagerialEconomics' , label: 'Managerial Economics'},
+                { value: 'BBB' , label: 'Big Data & Biological'},
             ]
         },
         electronic: {
@@ -206,54 +221,63 @@ function Calculater() {
 
 
   return (
-    <>
-        {/* Course dropdown */}
-        <select
-            value={selectedCourse}
-           onChange={(e) => handleCourseChange(e.target.value)}
-        >
-            <option value="">Select Course</option>
-            {courseOptions.map((course) => (
-                <option key={course.value} value={course.value}>
-                    {course.label}
-                </option>
-            ))}
-         </select>
-        {/* Level dropdown (displayed when a course is selected) */}
-        {selectedCourse && (
+    <div className=' flex flex-col justify-center items-center w-full'>
+        <div className=' min-h-[10vh] flex justify-between items-center gap-2  flex-wrap w-[full] pr-[5%] pl-[5%] py-2 border-b-[1px] border-[#393939] max-[880px]:justify-center'>
+            <h1 className='flex justify-center items-center gap-2 text-2xl font-semibold'>
+            <MdCalculate/>
+            <span className=' text-2xl font-semibold'>Grade Calculater</span>
+            </h1>
+        
             <select
-                value={selectedLevel}
-                onChange={(e) => handleLevelChange(e.target.value)}
+                className=' bg-[#393939] p-2 pr-4 pl-4 text-white outline-none rounded-md w-[240px]'
+                value={selectedCourse}
+            onChange={(e) => handleCourseChange(e.target.value)}
             >
-                <option value="">Select Level</option>
-                {levelOptions.map((level) => (
-                    <option key={level.value} value={level.value}>
-                        {level.label}
+                <option value="">Select Course</option>
+                {courseOptions.map((course) => (
+                    <option key={course.value} value={course.value}>
+                        {course.label}
                     </option>
                 ))}
             </select>
-        )}
-        {/* Subject dropdown (displayed when both course and level are selected) */}
-        {selectedCourse && selectedLevel && (
-            <select
-                value={selectedSubject}
-                onChange={(e) => handleSubjectChange(e.target.value)}
-            >
-                <option value="">Select Subject</option>
-                {subjectOptions[selectedCourse][selectedLevel].map((subject) => (
-                    <option key={subject.value} value={subject.value}>
-                        {subject.label}
-                    </option>
-                ))}
-            </select>
-        )}
-        {/* Result (displayed when a subject is selected) */}
-        {selectedSubject && (
-            <div>
-                {result}
-            </div>
-        )}
-    </>
+            {/* Level dropdown (displayed when a course is selected) */}
+            {selectedCourse && (
+                <select
+                    className=' bg-[#393939] p-2 pr-4 pl-4 text-white outline-none rounded-md w-[240px]'
+                    value={selectedLevel}
+                    onChange={(e) => handleLevelChange(e.target.value)}
+                >
+                    <option value="">Select Level</option>
+                    {levelOptions.map((level) => (
+                        <option key={level.value} value={level.value}>
+                            {level.label}
+                        </option>
+                    ))}
+                </select>
+            )}
+            {/* Subject dropdown (displayed when both course and level are selected) */}
+            {selectedCourse && selectedLevel && (
+                <select
+                    className=' bg-[#393939] p-2 pr-4 pl-4 text-white outline-none rounded-md w-[240px]'
+                    value={selectedSubject}
+                    onChange={(e) => handleSubjectChange(e.target.value)}
+                >
+                    <option value="">Select Subject</option>
+                    {subjectOptions[selectedCourse][selectedLevel].map((subject) => (
+                        <option key={subject.value} value={subject.value}>
+                            {subject.label}
+                        </option>
+                    ))}
+                </select>
+            )}
+            {/* Result (displayed when a subject is selected) */}
+            {selectedSubject && (
+                <div>
+                    {result}
+                </div>
+            )}
+        </div>
+    </div>
   )
 }
 
