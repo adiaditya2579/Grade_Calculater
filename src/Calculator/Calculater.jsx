@@ -221,11 +221,11 @@ function Calculater() {
 
 
   return (
-    <div className=''>
+    <div className=' h-screen w-full bg-[#27272B]'>
         <div className='min-h-[10vh] md:flex justify-between md:flex-wrap border-b-[1px] border-[#393939] px-[5%] py-2'>
-            <div className='flex justify-center items-center gap-2 text-2xl font-semibold'>
+            <div className='flex justify-center items-center gap-2 text-2xl font-semibold text-white'>
                 <MdCalculate/>
-                <span className='text-2xl font-bold'>Grade Calculater</span>
+                <span className='text-2xl font-bold '>Grade Calculater</span>
             </div>
             <div className='flex flex-col md:flex-row justify-center items-center'>
                 <select
