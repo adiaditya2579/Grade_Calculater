@@ -4,7 +4,7 @@ function CommonForm() {
     const [inputvalue, setInputvalue] = useState({
         QUIZ1: '',
         QUIZ2: '',
-        GAA: '',
+        GAA  : '',
         END_TERM: '',
         
       });
@@ -44,16 +44,17 @@ function CommonForm() {
         }
       };
   return (
-    <div>
+    <div className='mt-[40px] mx-[20px] p-5 border-[1px] border-[#393939] rounded-md'>
         {Object.entries(inputvalue).map(([key, value]) => (
-        <div key={key}>
-            <label htmlFor={key}>
+        <div key={key} className='w-[100%]'>
+            <label htmlFor={key} className=' text-white font-semibold min-w-10'>
             {key}
             </label>
             <input
+            className='w-[60%] p-2 px-2 bg-inherit text-yellow-500 rounded-md outline-none border-b-[1px] border-[#393939]'
             type="number"
             name={key}
-            placeholder={key}
+            placeholder={`${key} Score`}
             value={value}
             onChange={handalchange}
             onKeyPress={(e) => {
@@ -70,9 +71,9 @@ function CommonForm() {
         </div>
         ))}
         <div>
-        <button onClick={handalscore}>Submit</button>
-        <p>Final score {score}</p>
-        <h1>Letter Grade {grade}</h1>
+        <button onClick={handalscore} className='bg-purple-800 px-4 py-2 my-2 text-white rounded-md'>Submit</button>
+        <p className=' text-white'>Final Score {score}</p>
+        <h1 className=' text-white'>Letter Grade {grade}</h1>
         </div>
     </div>
 
