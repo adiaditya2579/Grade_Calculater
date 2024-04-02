@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import MyForm from '../../MyForm';
 function IntroductionC() {
 
   const [inputvalue, setInputvalue] = useState({
@@ -48,35 +48,13 @@ function IntroductionC() {
   };
   return (
     <div>
-      {Object.entries(inputvalue).map(([key, value]) => (
-        <div key={key}>
-          <label htmlFor={key}>
-            {key}
-          </label>
-          <input
-            type="number"
-            name={key}
-            placeholder={key}
-            value={value}
-            onChange={handalchange}
-            onKeyPress={(e) => {
-              const charCode = e.which? e.which : e.keyCode;
-              if (
-                charCode!== 46 &&
-                charCode > 31 &&
-                (charCode < 48 || charCode > 57)
-              ) {
-                e.preventDefault();
-              }
-            }}
-          />
-        </div>
-      ))}
-      <div>
-        <button onClick={handalscore}>Submit</button>
-        <p>Final score {score}</p>
-        <h1>Letter Grade {grade}</h1>
-      </div>
+    <MyForm
+    inputvalue={inputvalue}
+    score={score}
+    grade={grade}
+    handalscore={handalscore}
+    handalchange={handalchange}
+    />
     </div>
   )
 }
