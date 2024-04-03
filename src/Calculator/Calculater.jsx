@@ -24,6 +24,7 @@ import SoftwareEngineering from './DataScience/Degree/SoftwareEngineering';
 import DeepLearning from './DataScience/Degree/DeepLearning';
 import SearchMethods from './DataScience/Degree/SearchMethods';
 import Message from './Message';
+import BusinessDatamanagement from './DataScience/Deploma/BusinessDatamanagement';
 function Calculater() {
     // State variables
     const [selectedCourse, setSelectedCourse] = useState("");
@@ -163,7 +164,7 @@ function Calculater() {
         }else if (selectedSubject === 'mlt'){
             setResult(<MachineLearningPractice/>)
         }else if (selectedSubject === 'bdm'){
-            setResult()
+            setResult(<BusinessDatamanagement/>)
         }else if (selectedSubject === 'ba'){
             setResult()
         }else if (selectedSubject === 'tds'){

@@ -3,10 +3,10 @@ import MyForm from '../../MyForm';
 
 function CommonForm() {
     const [inputvalue, setInputvalue] = useState({
-        QUIZ1: '',
-        QUIZ2: '',
+        'QUIZ 1': '',
+        'QUIZ 2': '',
         GAA  : '',
-        END_TERM: '',
+        'END TERM': '',
         
       });
       const [score, setScore] = useState("");
@@ -21,7 +21,7 @@ function CommonForm() {
         });
       };
       const handalscore = () => {
-        const {GAA,END_TERM,QUIZ1,QUIZ2} = inputvalue;
+        const {GAA,'END TERM':END_TERM,'QUIZ 1': QUIZ1,'QUIZ 2':QUIZ2} = inputvalue;
         let T =  0.1 * GAA + Math.max(0.6 * END_TERM + 0.2 * Math.max(QUIZ1, QUIZ2), 0.4 * END_TERM + 0.2 * QUIZ1 + 0.3 * QUIZ2);
     
         T = Math.min(T, 100);
