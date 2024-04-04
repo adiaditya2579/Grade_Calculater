@@ -7,7 +7,8 @@ function PythonForm() {
     OPPE2: '',
     WTA: '',
     GAA: '',
-    END_TERM: '',
+    'BONUS MARKS': '',
+    'END TERM': '',
     
   });
   const [score, setScore] = useState("");
@@ -22,9 +23,11 @@ function PythonForm() {
     });
   };
   const handalscore = () => {
-    const {GAA,END_TERM,QUIZ1,WTA,OPPE1,OPPE2} = inputvalue;
+    const {GAA,'END TERM':END_TERM,QUIZ1,WTA,OPPE1,OPPE2,'BONUS MARKS':bonusmark} = inputvalue;
     let T =  0.1 * GAA + 0.1 * QUIZ1 + 0.4 * END_TERM + 0.25 * Math.max(OPPE1, OPPE2) + 0.15 *  Math.min(OPPE1, OPPE2) + 0.05 * WTA 
-
+    if(T > 40){
+      T += parseInt(bonusmark)
+  }
     T = Math.min(T, 100);
     let score = parseInt(T)
     setScore(score);

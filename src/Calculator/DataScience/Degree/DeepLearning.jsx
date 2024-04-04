@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-
+import MyForm from '../../MyForm';
+MyForm
 function DeepLearning() {
     const [inputvalue, setInputvalue] = useState({
-        QUIZ1: '',
-        QUIZ2: '',
+        'QUIZ 1': '',
+        'QUIZ 2': '',
         GAA: '',
         Bonus: '',
-        END_TERM: '',
+       'END TERM': '',
       });
       const [score, setScore] = useState("");
       let [grade, setgrade] = useState("");
@@ -20,7 +21,7 @@ function DeepLearning() {
         });
       };
       const handalscore = () => {
-        const {QUIZ1,QUIZ2,END_TERM,GAA,Bonus} = inputvalue;
+        const {'QUIZ 1':QUIZ1,'QUIZ 2':QUIZ2,'END TERM':END_TERM,GAA,Bonus} = inputvalue;
         let T = 0.1 * GAA +  Math.max((0.4 * END_TERM + 0.25 * QUIZ1 + 0.25  * QUIZ2), 0.5 * END_TERM +  0.3 * Math.max(QUIZ1,QUIZ2))+ Bonus 
     
         T = Math.min(T, 100);
@@ -45,35 +46,14 @@ function DeepLearning() {
       };
   return (
     <>
-      {Object.entries(inputvalue).map(([key, value]) => (
-        <div key={key}>
-          <label htmlFor={key}>
-            {key}
-          </label>
-          <input
-            type="number"
-            name={key}
-            placeholder={key}
-            value={value}
-            onChange={handalchange}
-            onKeyPress={(e) => {
-              const charCode = e.which? e.which : e.keyCode;
-              if (
-                charCode!== 46 &&
-                charCode > 31 &&
-                (charCode < 48 || charCode > 57)
-              ) {
-                e.preventDefault();
-              }
-            }}
-          />
-        </div>
-      ))}
-      <div>
-        <button onClick={handalscore}>Submit</button>
-        <p>Final score {score}</p>
-        <h1>Letter Grade {grade}</h1>
-      </div>
+      
+    <MyForm
+    inputvalue={inputvalue}
+    score={score}
+    grade={grade}
+    handalscore={handalscore}
+    handalchange={handalchange}
+    />
     </>
   )
 }

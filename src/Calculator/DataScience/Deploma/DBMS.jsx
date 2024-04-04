@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import MyForm from '../../MyForm';
 function DBMS() {
     const [inputvalue, setInputvalue] = useState({

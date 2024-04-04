@@ -2,15 +2,15 @@ import React from 'react'
 
 function MyForm({inputvalue,score,grade,handalscore,handalchange}) {
   return (
-    <div className=' md:absolute md:left-1/2 md:transform md:-translate-x-1/2'>
+    <div className='md:w-1/2 md:absolute md:left-1/2 md:transform md:-translate-x-1/2'>
       <div className=' mt-[40px] mx-[20px] p-5  border-[1px] border-[#393939] rounded-md'>
         {Object.entries(inputvalue).map(([key, value]) => (
         <div key={key} className='w-[100%] flex'>
-            <label htmlFor={key} className=' w-[10%] text-nowrap p-2 text-white font-semibold '>
+            <label htmlFor={key} className='w-[15%] text-nowrap p-2 text-white font-semibold '>
             {key}
             </label>
             <input
-            className='p-2   mx-20 bg-inherit text-yellow-700   rounded-md outline-none border-b-[1px] border-[#393939]'
+            className='   mx-20 bg-inherit text-yellow-700 min:w-[100%]   rounded-md outline-none border-b-[1px] border-[#393939]'
             type="number"
             name={key}
             placeholder={`${key} Score`}

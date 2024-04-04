@@ -5,15 +5,15 @@ function StatisticsOne() {
         QUIZ1: '',
         QUIZ2: '',
         GAA: '',
-        BONUS_MARKS: '',
-        END_TERM: '',
+        'BONUS MARKS': '',
+        'END TERM': '',
       });
       const [score, setScore] = useState("");
       let [grade, setgrade] = useState("");
     
       const handalchange = (e) => {
         const { name, value } = e.target;
-        if(name === "BONUS_MARKS" && parseInt(value) > 5 ){
+        if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
             setInputvalue({
                 ...inputvalue,
                 [name]:5
@@ -27,10 +27,10 @@ function StatisticsOne() {
         });
       };
       const handalscore = () => {
-        const {QUIZ1,QUIZ2,END_TERM,GAA,BONUS_MARKS} = inputvalue;
+        const {QUIZ1,QUIZ2,'END TERM':END_TERM,GAA,'BONUS MARKS':bonusmark} = inputvalue;
         let T = 0.1 * GAA + Math.max(0.6 * END_TERM  + 0.2 * Math.max(QUIZ1, QUIZ2),  0.4 * END_TERM  + 0.2 * QUIZ1 + 0.3 * QUIZ2) 
         if(T > 40){
-            T += parseInt(BONUS_MARKS)
+            T += parseInt(bonusmark)
         }
         T = Math.min(T, 100);
         let score = parseInt(T)

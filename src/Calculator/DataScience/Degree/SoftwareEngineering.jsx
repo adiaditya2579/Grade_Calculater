@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import MyForm from '../../MyForm';
 function SoftwareEngineering() {
     const [inputvalue, setInputvalue] = useState({
         QUIZ1: '',
@@ -44,39 +44,17 @@ function SoftwareEngineering() {
           setgrade('FAIL')
         }
       };
-  return (
-    <>
-      {Object.entries(inputvalue).map(([key, value]) => (
-        <div key={key}>
-          <label htmlFor={key}>
-            {key}
-          </label>
-          <input
-            type="number"
-            name={key}
-            placeholder={key}
-            value={value}
-            onChange={handalchange}
-            onKeyPress={(e) => {
-              const charCode = e.which? e.which : e.keyCode;
-              if (
-                charCode!== 46 &&
-                charCode > 31 &&
-                (charCode < 48 || charCode > 57)
-              ) {
-                e.preventDefault();
-              }
-            }}
-          />
-        </div>
-      ))}
-      <div>
-        <button onClick={handalscore}>Submit</button>
-        <p>Final score {score}</p>
-        <h1>Letter Grade {grade}</h1>
-      </div>
-    </>
-  )
+    return (
+      <>      
+        <MyForm
+        inputvalue={inputvalue}
+        score={score}
+        grade={grade}
+        handalscore={handalscore}
+        handalchange={handalchange}
+        />
+      </>
+      )
 }
 
 export default SoftwareEngineering

@@ -25,12 +25,17 @@ import DeepLearning from './DataScience/Degree/DeepLearning';
 import SearchMethods from './DataScience/Degree/SearchMethods';
 import Message from './Message';
 import BusinessDatamanagement from './DataScience/Deploma/BusinessDatamanagement';
+import BusinessAnalytics from './DataScience/Deploma/BusinessAnalytics';
+import ProfessionalGrowth from './DataScience/Degree/ProfessionalGrowth';
+import DTDD from './DataScience/Degree/DTDD';
+import MarketResearch from './DataScience/Degree/MarketResearch';
+import PSOS from './DataScience/Degree/PSOS';
 function Calculater() {
     // State variables
-    const [selectedCourse, setSelectedCourse] = useState("");
+    const [selectedCourse, setSelectedCourse] = useState(" ");
     const [selectedLevel, setSelectedLevel] = useState("");
-    const [selectedSubject, setSelectedSubject] = useState("");
-    let [result, setResult] = useState("")
+    const [selectedSubject, setSelectedSubject] = useState(" ");
+    let [result, setResult] = useState(" ")
     // Example options
     const courseOptions = [
         { value: 'datascience', label: 'Data Science' },
@@ -166,7 +171,7 @@ function Calculater() {
         }else if (selectedSubject === 'bdm'){
             setResult(<BusinessDatamanagement/>)
         }else if (selectedSubject === 'ba'){
-            setResult()
+            setResult(<BusinessAnalytics/>)
         }else if (selectedSubject === 'tds'){
             setResult(<ToolsInDataScience/>)
         }else if (selectedSubject === 'pdsa'){
@@ -183,6 +188,8 @@ function Calculater() {
             setResult(<ApplicationDevelopmenttwo/>)
         }
     }, [selectedSubject]); 
+
+
     useEffect(()=>{
         if(selectedSubject === 'SoftwareTesting'){
             setResult(<SoftwareTesting/>)
@@ -192,8 +199,20 @@ function Calculater() {
             setResult(<DeepLearning/>)
         }else if( selectedSubject === 'SearchMethods'){
             setResult(<SearchMethods/>)
+        }else if( selectedSubject === 'ProfessionalGrowth'){
+            setResult(<ProfessionalGrowth/>)
+        }else if (selectedSubject === 'DataVisualization'){
+            setResult()
+        }else if (selectedSubject === 'DTDD'){
+            setResult(<DTDD/>)
+        }else if (selectedSubject === 'MarketResearch'){
+            setResult(<MarketResearch/>)
+        }else if (selectedSubject==='IntroductionBigData'){
+            setResult()
+        }else if (selectedSubject === 'PSOS'){
+            setResult(<PSOS/>)
         }
-    })
+    },[selectedSubject])
 
 
     useEffect(() => {
@@ -213,9 +232,10 @@ function Calculater() {
             setResult(<ESCommonForm/>)
         }else if (selectedSubject === 'ElectronicCircuits'){
             setResult(<ESCommonForm/>)
-        }else if (selectedSubject === 'ElectronicsLab'){
+        }else if (selectedSubject === 'ElectronicLab'){
             setResult(<ElectronicsLab/>)
         }
+        
     }, [selectedSubject]); 
 
 
