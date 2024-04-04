@@ -10,7 +10,7 @@ function MyForm({inputvalue,score,grade,handalscore,handalchange}) {
             {key}
             </label>
             <input
-            className='   mx-20 bg-inherit text-yellow-700 min:w-[100%]   rounded-md outline-none border-b-[1px] border-[#393939]'
+            className=' mx-[6rem] bg-inherit text-yellow-700 min:w-[100%]   rounded-md outline-none border-b-[1px] border-[#393939]'
             type="number"
             name={key}
             placeholder={`${key} Score`}

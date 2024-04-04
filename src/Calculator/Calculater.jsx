@@ -30,6 +30,13 @@ import ProfessionalGrowth from './DataScience/Degree/ProfessionalGrowth';
 import DTDD from './DataScience/Degree/DTDD';
 import MarketResearch from './DataScience/Degree/MarketResearch';
 import PSOS from './DataScience/Degree/PSOS';
+import StatisticalComputing from './DataScience/Degree/StatisticalComputing'
+import IntroductionBigData from './DataScience/Degree/IntroductionBigData';
+import DataVisualization from './DataScience/Degree/DataVisualization';
+import ComputerSystemDesign from './DataScience/Degree/ComputerSystemDesign';
+import ProgrammingC from './DataScience/Degree/ProgrammingC';
+import DLFCV from './DataScience/Degree/DLFCV';
+import LargeLanguageModels from './DataScience/Degree/LargeLanguageModels';
 function Calculater() {
     // State variables
     const [selectedCourse, setSelectedCourse] = useState(" ");
@@ -202,15 +209,31 @@ function Calculater() {
         }else if( selectedSubject === 'ProfessionalGrowth'){
             setResult(<ProfessionalGrowth/>)
         }else if (selectedSubject === 'DataVisualization'){
-            setResult()
+            setResult(<DataVisualization/>)
         }else if (selectedSubject === 'DTDD'){
             setResult(<DTDD/>)
         }else if (selectedSubject === 'MarketResearch'){
             setResult(<MarketResearch/>)
         }else if (selectedSubject==='IntroductionBigData'){
-            setResult()
+            setResult(<IntroductionBigData/>)
         }else if (selectedSubject === 'PSOS'){
             setResult(<PSOS/>)
+        }else if (selectedSubject === 'StatisticalComputing'){
+            setResult(<StatisticalComputing/>)
+        }else if (selectedSubject === 'ComputerSystemDesign'){
+            setResult(<ComputerSystemDesign/>)
+        }else if (selectedSubject === 'OperatingSystems'){
+            setResult(<StatisticalComputing/>)
+        }else if (selectedSubject === 'ProgrammingC'){
+            setResult(<ProgrammingC/>)
+        }else if (selectedSubject === 'DLFCV'){
+            setResult(<DLFCV/>)
+        }else if (selectedSubject === 'LargeLanguageModels'){
+            setResult(<LargeLanguageModels/>)
+        }else if (selectedSubject === 'ManagerialEconomics'){
+            setResult(<DLFCV/>)
+        }else if (selectedSubject === 'BBB'){
+            setResult(<DLFCV/>)
         }
     },[selectedSubject])
 
