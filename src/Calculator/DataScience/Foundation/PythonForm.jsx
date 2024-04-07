@@ -16,6 +16,13 @@ function PythonForm() {
 
   const handalchange = (e) => {
     const { name, value } = e.target;
+    if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+      setInputvalue({
+         ...inputvalue,
+          [name]:5
+      })
+      return;
+    }
     const sanitizedValue =  Math.min(value,100)
     setInputvalue({
      ...inputvalue,

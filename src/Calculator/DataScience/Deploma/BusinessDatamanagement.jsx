@@ -3,6 +3,7 @@ import MyForm from '../../MyForm'
 function BusinessDatamanagement() {
   const [inputvalue, setInputvalue] = useState({    
     GAA: '',
+    'BONUS MARKS':'',
     'END TERM': '',
   });
   const [score, setScore] = useState("");
@@ -10,6 +11,13 @@ function BusinessDatamanagement() {
 
   const handalchange = (e) => {
     const { name, value } = e.target;
+    if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+      setInputvalue({
+          ...inputvalue,
+          [name]:5
+      })
+      return;
+    }
     const sanitizedValue =  Math.min(value,100)
     setInputvalue({
      ...inputvalue,
@@ -17,9 +25,11 @@ function BusinessDatamanagement() {
     });
   };
   const handalscore = () => {
-    const {'END TERM':END_TERM,GAA,} = inputvalue;
+    const {'END TERM':END_TERM,GAA,'BONUS MARKS':bonusmark} = inputvalue;
     let T =  (0.7 * GAA) + (0.30 * END_TERM )
-
+    if( T > 40){
+      T += parseInt(bonusmark)
+    }
     T = Math.min(T, 100);
     let score = parseInt(T)
     setScore(score);

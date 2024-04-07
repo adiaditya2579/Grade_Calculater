@@ -10,6 +10,7 @@ function SystemCommands() {
     OPPE1:'',
     OPPE2: '',
     VMT: '',
+    'BONUS MARKS':'',
     END_TERM: '',
   });
   const [score, setScore] = useState("");
@@ -17,6 +18,13 @@ function SystemCommands() {
 
   const handalchange = (e) => {
     const { name, value } = e.target;
+    if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+      setInputvalue({
+         ...inputvalue,
+          [name]:5
+      })
+      return;
+    }
     const sanitizedValue =  Math.min(value,100)
     setInputvalue({
      ...inputvalue,
@@ -24,9 +32,11 @@ function SystemCommands() {
     });
   };
   const handalscore = () => {
-    const {QUIZ1,QUIZ2,END_TERM,GAA1,GAA2,GAA3,OPPE1,OPPE2,VMT} = inputvalue;
+    const {QUIZ1,QUIZ2,END_TERM,GAA1,GAA2,GAA3,OPPE1,OPPE2,VMT,'BONUS MARKS':bonusmark} = inputvalue;
     let T =  0.06 * GAA1 + 0.02*  GAA2 + 0.02* GAA3+ Math.max(0.15 * QUIZ1 + 0.15 * QUIZ2, 0.2 * Math.max(QUIZ1,QUIZ2)) + 0.15*  OPPE1 +0.2 * OPPE2+ 0.3 * END_TERM + 0.1 * VMT 
-
+    if( T > 40){
+      T += parseInt(bonusmark)
+    }
     T = Math.min(T, 100);
     let score = parseInt(T)
     setScore(score);

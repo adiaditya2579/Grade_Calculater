@@ -21,10 +21,10 @@ function StatisticsTwo() {
             })
             return;
         }
-        if( name === 'EXTRA ACTIVITY' && parseInt(value) > 5){
+        if( name === 'EXTRA ACTIVITY' && parseInt(value) > 10){
           setInputvalue({
             ...inputvalue,
-            [name]:5
+            [name]:10
           })
           return;
         }

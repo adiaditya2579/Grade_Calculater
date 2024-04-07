@@ -32,7 +32,7 @@ function CommonForm() {
         const {GAA,'END TERM':END_TERM,'QUIZ 1': QUIZ1,'QUIZ 2':QUIZ2,'BONUS MARKS':bonusmark} = inputvalue;
         let T =  0.1 * GAA + Math.max(0.6 * END_TERM + 0.2 * Math.max(QUIZ1, QUIZ2), 0.4 * END_TERM + 0.2 * QUIZ1 + 0.3 * QUIZ2);
       if(T > 40){
-        T += bonusmark
+        T += parseInt(bonusmark)
       }
         T = Math.min(T, 100);
         let score = parseInt(T)

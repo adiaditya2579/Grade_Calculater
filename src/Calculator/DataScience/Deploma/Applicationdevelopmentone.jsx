@@ -6,6 +6,7 @@ function Applicationdevelopmentone() {
     QUIZ2: '',
     GAA: '',
     GLA: '',
+    'BONUS MARKS':'',
     END_TERM: '',
   });
   const [score, setScore] = useState("");
@@ -13,6 +14,13 @@ function Applicationdevelopmentone() {
 
   const handalchange = (e) => {
     const { name, value } = e.target;
+    if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+      setInputvalue({
+          ...inputvalue,
+          [name]:5
+      })
+      return;
+    }
     const sanitizedValue =  Math.min(value,100)
     setInputvalue({
      ...inputvalue,
@@ -20,9 +28,11 @@ function Applicationdevelopmentone() {
     });
   };
   const handalscore = () => {
-    const {QUIZ1,QUIZ2,END_TERM,GLA,GAA} = inputvalue;
+    const {QUIZ1,QUIZ2,END_TERM,GLA,GAA,'BONUS MARKS':bonusmark} = inputvalue;
     let T =   0.15 *  GLA + 0.05 * GAA+ Math.max(0.35 * END_TERM + 0.2 * QUIZ1 + 0.25 * QUIZ2, 0.4 * END_TERM + 0.3 * Math.max(QUIZ1,QUIZ2))
-
+    if(T > 40){
+      T += parseInt(bonusmark)
+    }
     T = Math.min(T, 100);
     let score = parseInt(T)
     setScore(score);

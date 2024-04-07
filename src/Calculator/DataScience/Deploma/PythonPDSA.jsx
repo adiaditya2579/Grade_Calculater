@@ -6,6 +6,7 @@ function PythonPDSA() {
     QUIZ2: '',
     GAA: '',
     OPPPE:'',
+    'BONUS MARKS':'',
     END_TERM: '',
   });
   const [score, setScore] = useState("");
@@ -13,6 +14,13 @@ function PythonPDSA() {
 
   const handalchange = (e) => {
     const { name, value } = e.target;
+    if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+      setInputvalue({
+         ...inputvalue,
+          [name]:5
+      })
+      return;
+    }
     const sanitizedValue =  Math.min(value,100)
     setInputvalue({
      ...inputvalue,
@@ -20,9 +28,11 @@ function PythonPDSA() {
     });
   };
   const handalscore = () => {
-    const {QUIZ1,QUIZ2,END_TERM,GAA,OPPPE} = inputvalue;
+    const {QUIZ1,QUIZ2,END_TERM,GAA,OPPPE,'BONUS MARKS':bonusmark} = inputvalue;
     let T =  0.1 * GAA +0.4*END_TERM+0.2 * OPPPE + Math.max(0.2 * Math.max(QUIZ1, QUIZ2), (0.15*QUIZ1+0.15*QUIZ2 ))
-
+    if (T > 40){
+      T += parseInt(bonusmark)
+    }
 
     T = Math.min(T, 100);
     let score = parseInt(T)

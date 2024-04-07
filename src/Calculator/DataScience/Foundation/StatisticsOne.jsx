@@ -6,7 +6,9 @@ function StatisticsOne() {
         QUIZ2: '',
         GAA: '',
         'BONUS MARKS': '',
+        'EXTRA ACTIVITY': '',
         'END TERM': '',
+        
       });
       const [score, setScore] = useState("");
       let [grade, setgrade] = useState("");
@@ -16,9 +18,16 @@ function StatisticsOne() {
         if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
             setInputvalue({
                 ...inputvalue,
-                [name]:5
+                [name]:10
             })
             return;
+        }
+        if( name === 'EXTRA ACTIVITY' && parseInt(value) > 5){
+          setInputvalue({
+            ...inputvalue,
+            [name]:5
+          })
+          return;
         }
         const sanitizedValue =  Math.min(value,100)
         setInputvalue({
@@ -27,8 +36,8 @@ function StatisticsOne() {
         });
       };
       const handalscore = () => {
-        const {QUIZ1,QUIZ2,'END TERM':END_TERM,GAA,'BONUS MARKS':bonusmark} = inputvalue;
-        let T = 0.1 * GAA + Math.max(0.6 * END_TERM  + 0.2 * Math.max(QUIZ1, QUIZ2),  0.4 * END_TERM  + 0.2 * QUIZ1 + 0.3 * QUIZ2) 
+        const {QUIZ1,QUIZ2,'END TERM':END_TERM,GAA,'BONUS MARKS':bonusmark,'EXTRA ACTIVITY':extractivity} = inputvalue;
+        let T = 0.1 * GAA + Math.max(0.6 * END_TERM  + 0.2 * Math.max(QUIZ1, QUIZ2),  0.4 * END_TERM  + 0.2 * QUIZ1 + 0.3 * QUIZ2) + extractivity
         if(T > 40){
             T += parseInt(bonusmark)
         }

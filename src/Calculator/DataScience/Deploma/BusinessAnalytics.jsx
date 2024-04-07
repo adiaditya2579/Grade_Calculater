@@ -6,12 +6,20 @@ function BusinessAnalytics() {
     'QUIZ 2':'',
     'Assignent 1':'',
     'Assignent 2':'',
+    'BONUS MARKS':'',
     'END TERM':'',
   })
     const [score,setScore] = useState('')
     let [grade, setgrade] = useState("")
     const handalchange = (e)=>{
         const { name,value} = e.target;
+        if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+          setInputvalue({
+             ...inputvalue,
+              [name]:5
+          })
+          return;
+        }
         setInputvalue({
             ...inputvalue,
             [name]: value
@@ -19,8 +27,11 @@ function BusinessAnalytics() {
     }
 
     const handalscore = ()=>{
-        const {'END TERM':END_TERM,'QUIZ 1':Qz1,'QUIZ 2':Qz2,'Assignent 1':A1,'Assignent 2':A2} = inputvalue
+        const {'END TERM':END_TERM,'QUIZ 1':Qz1,'QUIZ 2':Qz2,'Assignent 1':A1,'Assignent 2':A2,'BONUS MARKS':bonusmark} = inputvalue
         let T = 0.7* Math.max(Qz1, Qz2) + 0.3 * Math.min(Qz1, Qz2)
+        if(T > 40){
+            T += parseInt(bonusmark)
+        }
         T = Math.min(T, 20);
         let A = A1 + A2
         let score = parseInt(T+A+END_TERM)
@@ -56,4 +67,4 @@ function BusinessAnalytics() {
   )
 }
 
-export default BusinessAnalytics
+export default BusinessAnalytics;

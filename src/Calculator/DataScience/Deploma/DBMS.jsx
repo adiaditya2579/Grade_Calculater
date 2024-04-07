@@ -8,6 +8,7 @@ function DBMS() {
         GAA2: '',
         GAA3: '',
         OPPE:'',
+        'BONUS MARKS':'',
         END_TERM: '',
       });
       const [score, setScore] = useState("");
@@ -15,6 +16,13 @@ function DBMS() {
     
       const handalchange = (e) => {
         const { name, value } = e.target;
+        if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+          setInputvalue({
+              ...inputvalue,
+               [name]:5
+          })
+          return;
+        }
         const sanitizedValue =  Math.min(value,100)
         setInputvalue({
          ...inputvalue,
@@ -22,9 +30,11 @@ function DBMS() {
         });
       };
       const handalscore = () => {
-        const {QUIZ1,QUIZ2,END_TERM,GAA1,GAA2,GAA3,OPPE} = inputvalue;
+        const {QUIZ1,QUIZ2,END_TERM,GAA1,GAA2,GAA3,OPPE,'BONUS MARKS':bonusmark} = inputvalue;
         let T = 0.04 * GAA1 + 0.03*GAA2+0.03*GAA3 +0.2*OPPE+ Math.max (0.45* END_TERM+0.15 * max(QUIZ1, QUIZ2),  0.4*END_TERM+(0.10* QUIZ1+0.20 * QUIZ2 ))  
-    
+        if(T > 40){
+          T += parseInt(bonusmark)
+        }
         T = Math.min(T, 100);
         let score = parseInt(T)
         setScore(score);

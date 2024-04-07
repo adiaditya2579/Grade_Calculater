@@ -5,6 +5,7 @@ function MachineLearningTechniques() {
     QUIZ1: '',
     QUIZ2: '',
     GAA: '',
+    'BONUS MARKS':'',
     END_TERM: '',
   });
   const [score, setScore] = useState("");
@@ -12,6 +13,13 @@ function MachineLearningTechniques() {
 
   const handalchange = (e) => {
     const { name, value } = e.target;
+    if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
+      setInputvalue({
+         ...inputvalue,
+          [name]:5
+      })
+      return;
+    }
     const sanitizedValue =  Math.min(value,100)
     setInputvalue({
      ...inputvalue,
@@ -19,9 +27,11 @@ function MachineLearningTechniques() {
     });
   };
   const handalscore = () => {
-    const {QUIZ1,QUIZ2,END_TERM,GAA,} = inputvalue;
+    const {QUIZ1,QUIZ2,END_TERM,GAA,'BONUS MARKS':bonusmark} = inputvalue;
     let T =  0.2 * GAA + 0.4 * END_TERM + Math.max(0.2 * QUIZ1 +0.2 * QUIZ2, 0.3 * Math.max( QUIZ1,QUIZ2))
-
+    if(T> 40){
+      T += parseInt(bonusmark)
+    }
     T = Math.min(T, 100);
     let score = parseInt(T)
     setScore(score);
