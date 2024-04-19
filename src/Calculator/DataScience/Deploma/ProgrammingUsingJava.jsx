@@ -13,8 +13,9 @@ function ProgrammingUsingJava() {
   const [score, setScore] = useState("");
   let [grade, setgrade] = useState("");
 
-  const handalchange = (e) => {
+  const handalechange = (e) => {
     const { name, value } = e.target;
+    var sanitizedValue = parseInt(value);
     if(name === 'BONUS MARKS' && parseInt(value) > 5 ){
       setInputvalue({
          ...inputvalue,
@@ -22,20 +23,25 @@ function ProgrammingUsingJava() {
       })
       return;
     }
-    const sanitizedValue =  Math.min(value,100)
+    var sanitizedValue =  Math.min(value,100)
     setInputvalue({
      ...inputvalue,
       [name]: sanitizedValue,
     });
   };
-  const handalscore = () => {
+  const handalescore = () => {
     const {QUIZ1,QUIZ2,END_TERM,GAA,OPPE1,OPPE2,'BONUS MARKS':bonusmark} = inputvalue;
-    let T =  0.1 * GAA + 0.3*END_TERM+ 0.2 * Math.max(OPPE1,OPPE2)+ ((bonusmark)*0.10) * Math.min(OPPE1,OPPE2)+ Math.max *(0.25 *Math.max(QUIZ1,QUIZ2), 0.15 *QUIZ1+0.25* QUIZ2)
-    if (T>40){
-      T += parseInt(bonusmark)
+    let T = 0.1 * parseInt(GAA) + 0.3 * parseInt(END_TERM) + 0.2 * Math.max(parseInt(OPPE1), parseInt(OPPE2));
+    let bonusCalculation = (parseInt(bonusmark) * 0.10) * Math.min(parseInt(OPPE1), parseInt(OPPE2));
+    T += bonusCalculation;
+    T += Math.max((0.25 * Math.max(parseInt(QUIZ1), parseInt(QUIZ2))), (0.15 * parseInt(QUIZ1) + 0.25 * parseInt(QUIZ2)));
+
+    let F = parseInt(T);
+    if (F > 40) {
+      F += parseInt(bonusmark);
     }
-    T = Math.min(T, 100);
-    let score = parseInt(T)
+    F = Math.min(F, 100);
+    let score = parseInt(F);
     setScore(score);
 
     if (score >= 90) {
@@ -60,8 +66,8 @@ function ProgrammingUsingJava() {
       inputvalue={inputvalue}
       score={score}
       grade={grade}
-      handalscore={handalscore}
-      handalchange={handalchange}
+      handalscore={handalescore}
+      handalchange={handalechange}
       />
     </>
   )
