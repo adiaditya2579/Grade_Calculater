@@ -31,7 +31,7 @@ function DBMS() {
       };
       const handalscore = () => {
         const {QUIZ1,QUIZ2,END_TERM,GAA1,GAA2,GAA3,OPPE,'BONUS MARKS':bonusmark} = inputvalue;
-        let T = 0.04 * GAA1 + 0.03*GAA2+0.03*GAA3 +0.2*OPPE+ Math.max (0.45* END_TERM+0.15 * max(QUIZ1, QUIZ2),  0.4*END_TERM+(0.10* QUIZ1+0.20 * QUIZ2 ))  
+        let T = 0.04 * GAA1 + 0.03*GAA2+0.03*GAA3 +0.2*OPPE+ Math.max (0.45* END_TERM+0.15 * Math.max(QUIZ1, QUIZ2),  0.4*END_TERM+(0.10* QUIZ1+0.20 * QUIZ2 ))  
         if(T > 40){
           T += parseInt(bonusmark)
         }
