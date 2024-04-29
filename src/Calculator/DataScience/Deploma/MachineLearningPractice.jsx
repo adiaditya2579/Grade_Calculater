@@ -46,15 +46,15 @@ function MachineLearningPractice() {
         }
     }
   return (
-    <>
-    <MyForm
-    inputvalue={inputvalue}
-    score={score}
-    grade={grade}
-    handalscore={handalscore}
-    handalchange={handalchange}
-    />
-    </>
+    <div>
+      <MyForm
+      inputvalue={inputvalue}
+      score={score}
+      grade={grade}
+      handalscore={handalscore}
+      handalchange={handalchange}
+      />
+    </div>
   )
 }
 

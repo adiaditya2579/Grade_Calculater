@@ -173,7 +173,7 @@ function Calculater() {
             setResult(<MachineLearningFoundations/>)
         }else if (selectedSubject === 'mlt'){
             setResult(<MachineLearningTechniques/>)
-        }else if (selectedSubject === 'mlt'){
+        }else if (selectedSubject === 'mlp'){
             setResult(<MachineLearningPractice/>)
         }else if (selectedSubject === 'bdm'){
             setResult(<BusinessDatamanagement/>)
